@@ -1,20 +1,20 @@
-
-const G = 6.674e-11;
-const timeInterval = 10000; //in seconds
+/* eslint no-undef:1, max-len:0*/
 
 class Planet {
-  constructor(name, mass, radius, position, velocity, acceleration, solarSystem) {
+  constructor(name, mass, radius, position, initialVelocity, solarSystem) {
     this.name = name;
     // mass in kg, distance in km, vel in km/s
     this.mass = mass;
     this.radius = radius;
     this.position = position;
-    this.velocity = velocity;
-    this.acceleration = acceleration;
+    this.velocity = initialVelocity;
+    this.acceleration = new Acceleration(0, 0);
     this.solarSystem = solarSystem;
   }
 
   step() {
+    const G = 6.674e-11; //gravitational constant
+    let timeInterval = this.solarSystem.timeInterval;
     this.position.x += this.velocity.x * timeInterval;
     this.position.y += this.velocity.y * timeInterval;
 
@@ -32,7 +32,6 @@ class Planet {
         let Fx = F * Math.cos(theta);
         let Fy = F * Math.sin(theta);
 
-        if (this.name === "earth") {console.log(Fx, Fy);}
         // Newton's 2nd Law
         this.acceleration.x = (Fx / this.mass) / 1000; // km/sec^2
         this.acceleration.y = (Fy / this.mass) / 1000;

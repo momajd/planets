@@ -16,9 +16,10 @@
       document.addEventListener("DOMContentLoaded", function() {
         let canvasEl = document.getElementById('canvas');
         let ctx = canvasEl.getContext("2d");
-        let scale = 0.5 / 695700; // radius of sun
+        let scale = 0.2 / 695700; // radius of sun
+        let timeInterval = 100000; //seconds
 
-        solarSystem = new SolarSystem;
+        solarSystem = new SolarSystem(timeInterval);
         new View(ctx, scale, solarSystem).animate();
       })
 
