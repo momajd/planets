@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Planets</title>
+  </head>
+  <body>
+    <script src="planet.js"></script>
+    <script src="solar_system.js"></script>
+    <script src="view.js"></script>
+
+    <canvas id="canvas" width="800" height="600" style="border:1px solid #000000;">
+    </canvas>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        let canvasEl = document.getElementById('canvas');
+        let ctx = canvasEl.getContext("2d");
+        let scale = 0.5 / 695700; // radius of sun
+
+        solarSystem = new SolarSystem;
+        new View(ctx, scale, solarSystem).animate();
+      })
+
+    </script>
+  </body>
+</html>
