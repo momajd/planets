@@ -1,15 +1,17 @@
 /* eslint no-undef:1, max-len:0*/
 
 class Planet {
-  constructor(name, mass, radius, position, initialVelocity, solarSystem) {
+  constructor(name, color, mass, radius, initialPosition, initialVelocity, solarSystem) {
     this.name = name;
+    this.color = color;
     // mass in kg, distance in km, vel in km/s
     this.mass = mass;
     this.radius = radius;
-    this.position = position;
+    this.position = initialPosition;
     this.velocity = initialVelocity;
     this.acceleration = new Acceleration(0, 0);
     this.solarSystem = solarSystem;
+    // this.trailCoords = [];
   }
 
   step() {
@@ -17,6 +19,7 @@ class Planet {
     let timeInterval = this.solarSystem.timeInterval;
     this.position.x += this.velocity.x * timeInterval;
     this.position.y += this.velocity.y * timeInterval;
+    // this.pushToTrail(new Position(this.position.x, this.position.y));
 
     this.solarSystem.planets.forEach(planet => {
       if (this !== planet) {
@@ -41,6 +44,12 @@ class Planet {
       }
     });
   }
+
+  // pushToTrail(position) {
+  //   if (this.trailCoords.length < 100) {
+  //     this.trailCoords.push(position);
+  //   }
+  // }
 }
 
 class Position {

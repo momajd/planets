@@ -17,16 +17,16 @@ class SolarSystem {
     // earth: 6371, mars: 3390, jupiter: 69911, mercury 2440, venus: 6052,
     // pluto: 1187, saturn 58232, uranus 25362, neptune 24622
 
-    let sun = new Planet("sun", 1.989e30, sunRadius, new Position(0, 0), new Velocity(0, 0), this);
-    let earth = new Planet("earth", 5.972e24, 1/4*sunRadius, new Position(0, 1.496e8), new Velocity(30, 0), this);
-    let mars = new Planet("mars", 6.39e23, 1/8*sunRadius, new Position(0, 2.279e8), new Velocity(24.1, 0), this);
-    let jupiter = new Planet("jupiter", 1.898e27, 3/4*sunRadius, new Position(0, 7.785e8), new Velocity(13.1, 0), this);
-    let mercury = new Planet("mercury", 3.285e23, 1/8*sunRadius, new Position(0, 5.791e7), new Velocity(47.4, 0), this);
-    let venus = new Planet("venus", 4.867e24, 1/4*sunRadius, new Position(0, 1.082e8), new Velocity(35, 0), this);
-    let pluto = new Planet("pluto", 1.309e22, 1/16*sunRadius, new Position(0, 4.44e9), new Velocity(4.75, 0), this);
-    let saturn = new Planet("saturn", 5.683e26, 3/4*sunRadius, new Position(0, 1.429e9), new Velocity(9.67, 0), this);
-    let uranus = new Planet("uranus", 8.681e25, 1/2*sunRadius, new Position(0, 2.871e9), new Velocity(6.84, 0), this);
-    let neptune = new Planet("neptune", 1.024e26, 1/2*sunRadius, new Position(0, 4.498e9), new Velocity(5.48, 0), this);
+    let sun = new Planet("sun", "yellow", 1.989e30, sunRadius, new Position(0, 0), new Velocity(0, 0), this);
+    let earth = new Planet("earth", "blue", 5.972e24, 1/4*sunRadius, new Position(0, 1.496e8), new Velocity(30, 0), this);
+    let mars = new Planet("mars", "lightcyan", 6.39e23, 1/8*sunRadius, new Position(0, 2.279e8), new Velocity(24.1, 0), this);
+    let jupiter = new Planet("jupiter", "lightcyan", 1.898e27, 3/4*sunRadius, new Position(0, 7.785e8), new Velocity(13.1, 0), this);
+    let mercury = new Planet("mercury", "lightcyan", 3.285e23, 1/8*sunRadius, new Position(0, 5.791e7), new Velocity(47.4, 0), this);
+    let venus = new Planet("venus", "lightcyan", 4.867e24, 1/4*sunRadius, new Position(0, 1.082e8), new Velocity(35, 0), this);
+    let pluto = new Planet("pluto", "lightcyan", 1.309e22, 1/16*sunRadius, new Position(4.44e9, 0), new Velocity(0, -4.75), this);
+    let saturn = new Planet("saturn", "lightcyan", 5.683e26, 3/4*sunRadius, new Position(0, 1.429e9), new Velocity(9.67, 0), this);
+    let uranus = new Planet("uranus", "lightcyan", 8.681e25, 1/2*sunRadius, new Position(0, 2.871e9), new Velocity(6.84, 0), this);
+    let neptune = new Planet("neptune", "lightcyan", 1.024e26, 1/2*sunRadius, new Position(0, 4.498e9), new Velocity(5.48, 0), this);
 
     let planets = [sun, earth, mars, jupiter, mercury, venus, pluto, saturn, uranus, neptune];
     planets.forEach(planet => this.planets.push(planet));

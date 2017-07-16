@@ -13,6 +13,10 @@
     <div class="container">
       <canvas id="canvas" style="width:100%; height:100%">
       </canvas>
+
+      <div class="time-box">
+        Time elapsed: <span id="time-count">0</span> years
+      </div>
     </div>
 
     <script>
@@ -22,11 +26,11 @@
         canvas.height = window.innerHeight;
 
         let ctx = canvas.getContext("2d");
-        let scale = 0.2 / 695700; // radius of sun
+        let initialScale = 1.5 / 695700; // radius of sun;
         let timeInterval = 50000; //seconds
 
         let solarSystem = new SolarSystem(timeInterval);
-        new View(ctx, scale, solarSystem).animate();
+        new View(ctx, initialScale, solarSystem).animate();
       })
 
     </script>
