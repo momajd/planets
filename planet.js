@@ -44,18 +44,16 @@ class Planet {
       }
     });
   }
-
-  // pushToTrail(position) {
-  //   if (this.trailCoords.length < 100) {
-  //     this.trailCoords.push(position);
-  //   }
-  // }
 }
 
 class Position {
   constructor(x, y) {
     this.x = x;
     this.y = y;
+  }
+
+  distanceToOrigin() {
+    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
   }
 }
 
