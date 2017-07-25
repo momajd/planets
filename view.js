@@ -29,14 +29,12 @@ class View {
       ctx.fill();
 
       // for text
-      if (planet.position.distanceToOrigin() * scale > 20 || planet.name === "sun") {
-        ctx.font="bold 26px 'Source Sans Pro', sans-serif";
-        ctx.fillText(
-          planet.name,
-          (planet.position.x + planet.radius) * scale + offsetX + 5,
-          planet.position.y * scale + offsetY
-        );
-      }
+      ctx.font="bold 26px 'Source Sans Pro', sans-serif";
+      ctx.fillText(
+        planet.name,
+        (planet.position.x + planet.radius) * scale + offsetX + 5,
+        planet.position.y * scale + offsetY
+      );
     });
   }
 

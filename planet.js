@@ -5,6 +5,7 @@ class Planet {
     this.name = name;
     this.color = color;
     // mass in kg, distance in km, vel in km/s
+    this.massOriginal = mass;
     this.mass = mass;
     this.radius = radius;
     this.position = initialPosition;
@@ -49,9 +50,11 @@ class Planet {
 
   updateMass() {
     let sliderId = this.name + "-slider";
+    let massId = this.name + "-mass";
     if (document.getElementById(sliderId)) {
       let power = document.getElementById(sliderId).value;
-      this.mass = Math.pow(5.972, power);
+      this.mass = (this.massOriginal * Math.pow(10, power));
+      document.getElementById(massId).innerHTML = this.mass.toExponential();
     }
   }
 }
