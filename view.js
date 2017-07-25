@@ -30,7 +30,7 @@ class View {
 
       // for text
       if (planet.position.distanceToOrigin() * scale > 20 || planet.name === "sun") {
-        ctx.font="16px Helvetica, Arial, sans-serif";
+        ctx.font="bold 26px 'Source Sans Pro', sans-serif";
         ctx.fillText(
           planet.name,
           (planet.position.x + planet.radius) * scale + offsetX + 5,
@@ -49,13 +49,13 @@ class View {
     let markerRadii = [rad, 1.5*rad, 5*rad, 10*rad, 20*rad, 50*rad];
 
     markerRadii.forEach(radius => {
-      ctx.beginPath();
-      ctx.arc(offsetX, offsetY, radius * this.scale, 0, 2*Math.PI);
-      ctx.strokeStyle = "green";
-      ctx.stroke();
-
-      // only label marker if radius is big enough
       if (radius*this.scale > 100) {
+        // only label marker if radius is big enough
+        ctx.beginPath();
+        ctx.arc(offsetX, offsetY, radius * this.scale, 0, 2*Math.PI);
+        ctx.strokeStyle = "green";
+        ctx.stroke();
+
         ctx.fillStyle = "green";
         ctx.font="14px Helvetica, Arial, sans-serif";
         ctx.fillText(
@@ -72,7 +72,7 @@ class View {
       let canvasEl = this.context.canvas;
       this.context.clearRect(0, 0, canvasEl.width, canvasEl.height);
       this.drawAllPlanets();
-      this.calculateTime();
+      if (!this.solarSystem.isPaused) {this.calculateTime();}
       this.drawDistanceMarkers();
     }.bind(this), 10);
   }

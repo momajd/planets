@@ -4,6 +4,7 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 html,body{
 	width:100%;
 	height:100%;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .container {
@@ -19,11 +20,60 @@ canvas {
 }
 
 .time-box {
+	display: flex;
+	align-items: center;
 	position: absolute;
 	left: 20px;
 	top: 20px;
   color: #13E8E9;
-  font-size: 14px;
-  font-family: Helvetica, Arial, sans-serif;
+	/*color: #eee;*/
+  font-size: 18px;
   font-weight: bold;
+}
+
+#time-count {
+	padding-left: 10px;
+}
+
+#pause-btn {
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.controls {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	font-size: 16px;
+	color: #eee;
+}
+
+.control-header {
+	width: 250px;
+	background-color: rgba(238,238,238,0.5);
+	width: 340px;
+	height: 26px;
+	border-radius: 3px 3px 0 0;
+	padding-left: 10px;
+	/*background-color: rgb(26, 26, 26)*/
+}
+
+.control-header a {
+	color: #eee;
+}
+
+a:before {
+    content: "►";
+    display: block;
+    float: left;
+    width: 1.2em;
+    color: #eee;
+}
+
+.collapsed:before {
+    content: "▼";
+    display: block;
+    float: left;
+    width: 1.2em;
+    color: #eee;
 }

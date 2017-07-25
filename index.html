@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Planets</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <script src="https://use.fontawesome.com/1cd79baff9.js"></script>
   </head>
   <body>
     <script src="planet.js"></script>
@@ -10,29 +16,44 @@
     <script src="view.js"></script>
     <link rel="stylesheet" href="style.css">
 
+    <!-- TODO pause button -->
+    <!-- TODO add scale  -->
+
     <div class="container">
       <canvas id="canvas" style="width:100%; height:100%">
       </canvas>
 
       <div class="time-box">
+        <i id="pause-btn" class="fa fa-pause-circle-o fa-3x" aria-hidden="true"></i>
         Time elapsed: <span id="time-count">0</span> years
+      </div>
+
+      <div id="pause-button">
+      </div>
+
+      <div class="controls">
+        <div class="control-header">
+          <a data-toggle="collapse" href="#hideControls" aria-expanded="false" aria-controls="collapseExample">
+            Mass Controls
+          </a>
+        </div>
+        <div class="collapse in" id="hideControls">
+          <input id="earth-slider" type="range" min="10" max="40" value="24">
+        </div>
       </div>
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        let canvas = document.getElementById('canvas');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+      let canvas = document.getElementById('canvas');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-        let ctx = canvas.getContext("2d");
-        let initialScale = 1.5 / 695700; // radius of sun;
-        let timeInterval = 50000; //seconds
+      let ctx = canvas.getContext("2d");
+      let initialScale = 1.5 / 695700; // radius of sun;
+      let timeInterval = 50000; //seconds
 
-        let solarSystem = new SolarSystem(timeInterval);
-        new View(ctx, initialScale, solarSystem).animate();
-      })
-
+      let solarSystem = new SolarSystem(timeInterval);
+      new View(ctx, initialScale, solarSystem).animate();
     </script>
   </body>
 </html>

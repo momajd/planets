@@ -5,7 +5,10 @@ class SolarSystem {
   constructor (timeInterval) {
     this.timeInterval = timeInterval; //time that each step is calc'ed
     this.planets = [];
+    this.isPaused = false;
+
     this.addPlanets();
+    this.addPauseListener();
   }
 
   addPlanets () {
@@ -30,5 +33,21 @@ class SolarSystem {
 
     let planets = [sun, earth, mars, jupiter, mercury, venus, pluto, saturn, uranus, neptune];
     planets.forEach(planet => this.planets.push(planet));
+  }
+
+  addPauseListener() {
+    let btn = document.getElementById("pause-btn");
+
+    btn.addEventListener("click", function() {
+      this.isPaused = !this.isPaused;
+
+      if (this.isPaused) {
+        btn.classList.add('fa-play-circle-o');
+        btn.classList.remove('fa-pause-circle-o');
+      } else {
+        btn.classList.add('fa-pause-circle-o');
+        btn.classList.remove('fa-play-circle-o');
+      }
+    }.bind(this));
   }
 }

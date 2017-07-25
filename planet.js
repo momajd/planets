@@ -11,38 +11,48 @@ class Planet {
     this.velocity = initialVelocity;
     this.acceleration = new Acceleration(0, 0);
     this.solarSystem = solarSystem;
-    // this.trailCoords = [];
   }
 
   step() {
     const G = 6.674e-11; //gravitational constant
     let timeInterval = this.solarSystem.timeInterval;
-    this.position.x += this.velocity.x * timeInterval;
-    this.position.y += this.velocity.y * timeInterval;
-    // this.pushToTrail(new Position(this.position.x, this.position.y));
 
-    this.solarSystem.planets.forEach(planet => {
-      if (this !== planet) {
-        let rx = this.position.x - planet.position.x;
-        let ry = this.position.y - planet.position.y;
-        let r = Math.sqrt(Math.pow(rx, 2) + Math.pow(ry, 2));
+    if (!this.solarSystem.isPaused) {
+      this.position.x += this.velocity.x * timeInterval;
+      this.position.y += this.velocity.y * timeInterval;
+      this.updateMass();
 
-        // Universal law of gravitation
-        let F = G * this.mass * planet.mass / Math.pow(r * 1000, 2); //newtons
-        if (rx > 0) {F *= -1;}
+      this.solarSystem.planets.forEach(planet => {
+        if (this !== planet) {
+          let rx = this.position.x - planet.position.x;
+          let ry = this.position.y - planet.position.y;
+          let r = Math.sqrt(Math.pow(rx, 2) + Math.pow(ry, 2));
 
-        let theta = Math.atan(ry/rx);
-        let Fx = F * Math.cos(theta);
-        let Fy = F * Math.sin(theta);
+          // Universal law of gravitation
+          let F = G * this.mass * planet.mass / Math.pow(r * 1000, 2); //newtons
+          if (rx > 0) {F *= -1;}
 
-        // Newton's 2nd Law
-        this.acceleration.x = (Fx / this.mass) / 1000; // km/sec^2
-        this.acceleration.y = (Fy / this.mass) / 1000;
+          let theta = Math.atan(ry/rx);
+          let Fx = F * Math.cos(theta);
+          let Fy = F * Math.sin(theta);
 
-        this.velocity.x += this.acceleration.x * timeInterval;
-        this.velocity.y += this.acceleration.y * timeInterval;
-      }
-    });
+          // Newton's 2nd Law
+          this.acceleration.x = (Fx / this.mass) / 1000; // km/sec^2
+          this.acceleration.y = (Fy / this.mass) / 1000;
+
+          this.velocity.x += this.acceleration.x * timeInterval;
+          this.velocity.y += this.acceleration.y * timeInterval;
+        }
+      });
+    }
+  }
+
+  updateMass() {
+    let sliderId = this.name + "-slider";
+    if (document.getElementById(sliderId)) {
+      let power = document.getElementById(sliderId).value;
+      this.mass = Math.pow(5.972, power);
+    }
   }
 }
 
