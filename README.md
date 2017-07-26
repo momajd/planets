@@ -1,12 +1,10 @@
 # Planets
 
-##[Live Link][link]
-
-[link]: https://momajd.github.io/planets/
+[Live Link](https://momajd.github.io/planets/)
 
 A simulation of the solar system that uses Newton's Universal Law of Gravitation. User can modify the mass of each planet. Built with javascript and HTML5.
 
-![Intro](http://gph.is/2uuZmB6)
+![Intro](https://media.giphy.com/media/OclNTHOaVRggU/giphy.gif)
 
 ```javascript
 // planet.js
